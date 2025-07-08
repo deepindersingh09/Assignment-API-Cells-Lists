@@ -29,6 +29,7 @@ export default function App() {
   useEffect(() => {
     getFact();
   }, [month, day]);
+  //This is assignment 
 
   return (
     <KeyboardAvoidingView
