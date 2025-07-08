@@ -37,7 +37,16 @@ export default function App() {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <View style={styles.inner}>
-        {fact !== '' && <Text style={styles.factBox}>{fact}</Text>}
+        <Text style={styles.heading}>
+          Choose a month and enter a day to get an interesting fact!
+        </Text>
+
+        {fact !== '' && (
+          <View>
+            <Text style={styles.factBox}>{fact}</Text>
+          </View>
+        )}  
+
 
         <View style={styles.pickerWrapper}>
           <Picker
@@ -83,12 +92,21 @@ const styles = StyleSheet.create({
   inner: {
     paddingHorizontal: 20,
     alignItems: 'center',
+    gap: 10, 
   },
+
   factBox: {
     fontSize: 16,
     marginBottom: 20,
     textAlign: 'center',
   },
+    heading: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
+    color: '#333',
+  },
   input: {
     borderWidth: 1,
     borderColor: '#999',
