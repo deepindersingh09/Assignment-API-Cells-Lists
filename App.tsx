@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 export default function App() {
   const [month, setMonth] = useState('');
@@ -37,13 +38,27 @@ export default function App() {
       <View style={styles.inner}>
         {fact !== '' && <Text style={styles.factBox}>{fact}</Text>}
 
-        <TextInput
-          style={styles.input}
-          placeholder="Month"
-          keyboardType="numeric"
-          onChangeText={(text) => setMonth(text)}
-          value={month}
-        />
+        <View style={styles.pickerWrapper}>
+          <Picker
+            selectedValue={month}
+            onValueChange={(value) => setMonth(value)}
+            style={styles.picker}
+          >
+            <Picker.Item label="Select Month" value="" />
+            <Picker.Item label="January" value="1" />
+            <Picker.Item label="February" value="2" />
+            <Picker.Item label="March" value="3" />
+            <Picker.Item label="April" value="4" />
+            <Picker.Item label="May" value="5" />
+            <Picker.Item label="June" value="6" />
+            <Picker.Item label="July" value="7" />
+            <Picker.Item label="August" value="8" />
+            <Picker.Item label="September" value="9" />
+            <Picker.Item label="October" value="10" />
+            <Picker.Item label="November" value="11" />
+            <Picker.Item label="December" value="12" />
+          </Picker>
+        </View>
 
         <TextInput
           style={styles.input}
@@ -52,6 +67,7 @@ export default function App() {
           onChangeText={(text) => setDay(text)}
           value={day}
         />
+
       </View>
     </KeyboardAvoidingView>
   );
@@ -81,4 +97,19 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     fontSize: 16,
   },
+  pickerWrapper: {
+  width: '100%',
+  borderWidth: 1,
+  borderColor: '#999',
+  borderRadius: 6,
+  marginBottom: 15,
+  backgroundColor: '#fff',
+  overflow: 'hidden',
+},
+
+picker: {
+  height: 50,
+  width: '100%',
+}
+
 });
